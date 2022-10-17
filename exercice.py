@@ -3,12 +3,16 @@
 
 import random
 
-def get_bill(name, data):
-	INDEX_NAME = 0
+def get_bill(name: str, data: list[tuple]):
+	INDEX_NAME = 0  # useless
 	INDEX_QUANTITY = 1
 	INDEX_PRICE = 2
-
-	return ""
+	price = 0
+	for entry in data:
+		price += (entry[INDEX_QUANTITY] * entry[INDEX_PRICE])
+	taxe = price * 0.15
+	total = price + taxe
+	return f"{name}\nSOUS TOTAL{format(price, '.2f'):>12}\nTAXES{format(taxe, '.2f'):>17}\nTOTAL{format(total, '.2f'):>17}"
 
 
 def format_number(number, num_decimal_digits):
