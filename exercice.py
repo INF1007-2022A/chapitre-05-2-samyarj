@@ -23,16 +23,19 @@ def format_number(number, num_decimal_digits):
 	decimal = number - int(number)
 	number = str(int(number))
 	number = number[::-1]  # reverse the number
-	group = []
+	group = ''
+
 	result = ''
 
 	for digit in number:
-		if len(result) % 3 == 0 and len(result) != 0:
-			result += ' '
-			result += digit
+		if len(group) < 3:
+			group += digit
 		else:
-			result += digit
-
+			result += group
+			result += ' '
+			group = ''
+			group += digit
+	result += group
 
 	result = result[::-1]
 	result += str(decimal)[1:num_decimal_digits+2]  # add decimal
