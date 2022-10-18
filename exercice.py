@@ -42,6 +42,7 @@ def format_number(number, num_decimal_digits):
 	if neg == True:  # if number is -ve
 		result = '-' + result
 	return result
+
 def get_triangle(num_rows):
 	return ""
 
