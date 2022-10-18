@@ -16,18 +16,28 @@ def get_bill(name: str, data: list[tuple]):
 
 
 def format_number(number, num_decimal_digits):
-	round(number, num_decimal_digits)
+	neg = False
+	if number < 0:
+		neg = True
+	number = abs(round(number, num_decimal_digits))
 	decimal = number - int(number)
-	number = str(abs(int(number)))
-	group3 = ''
+	number = str(int(number))
+	number = number[::-1]  # reverse the number
+	group = []
 	result = ''
+
 	for digit in number:
-		if len(group3) < 3:
-			group3 += digit
-		if len(group3) >= 3:
-			result += group3
-			result += '_'
-			group3 = ''
+		if len(result) % 3 == 0 and len(result) != 0:
+			result += ' '
+			result += digit
+		else:
+			result += digit
+
+
+	result = result[::-1]
+	result += str(decimal)[1:num_decimal_digits+2]  # add decimal
+	if neg == True:  # if number is -ve
+		result = '-' + result
 	return result
 def get_triangle(num_rows):
 	return ""
