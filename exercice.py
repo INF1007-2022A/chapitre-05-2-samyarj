@@ -16,8 +16,19 @@ def get_bill(name: str, data: list[tuple]):
 
 
 def format_number(number, num_decimal_digits):
-	return ""
-
+	round(number, num_decimal_digits)
+	decimal = number - int(number)
+	number = str(abs(int(number)))
+	group3 = ''
+	result = ''
+	for digit in number:
+		if len(group3) < 3:
+			group3 += digit
+		if len(group3) >= 3:
+			result += group3
+			result += '_'
+			group3 = ''
+	return result
 def get_triangle(num_rows):
 	return ""
 
