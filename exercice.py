@@ -46,9 +46,10 @@ def format_number(number, num_decimal_digits):
 def get_triangle(num_rows: int) -> str:
 	r_num_rows = num_rows + 2  # num of real rows = num_rows+2 (+ bottom, + above )
 	num_of_a = [i for i in range(1, 2 * num_rows, 2)]
+	reverse_list = reversed(num_of_a)
 	result = '*' * (num_of_a[-1]+2) + '\n'  # first row, stars only
 	for i in num_of_a:
-		result += '*' + 'a' * i + '>10 *\n'
+		result += '*' + 'a' * i  + '*'+'\n'
 	result += '*' * (num_of_a[-1]+2)  # Last row, stars only
 	return result
 
